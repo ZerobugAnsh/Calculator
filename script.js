@@ -1,5 +1,4 @@
 let screen = document.getElementById("display");
-
 let first = "";
 let second = "";
 let op = "";
@@ -13,12 +12,11 @@ function appendValue(value)
     }
     else
     {
-        if(op=="")
-        {
+        if(op==""){
             first += value;
         }
-        else
-        {
+        else{
+        
             second += value;
         }
 
@@ -26,9 +24,8 @@ function appendValue(value)
     }
 }
 
-function clearDisplay()
-{
-    screen.value="";
+function clearDisplay(){
+     screen.value="";
     first="";
     second="";
     op="";
@@ -40,26 +37,20 @@ function calculate()
     let b = Number(second);
     let ans;
 
-    if(op=="+")
-    {
+    if(op=="+"){
         ans = a + b;
     }
-    else if(op=="-")
-    {
+    else if(op=="-"){
         ans = a - b;
     }
-    else if(op=="*")
-    {
+    else if(op=="*"){
         ans = a * b;
     }
-    else if(op=="/")
-    {
-        if(b==0)
-        {
+    else if(op=="/"){
+        if(b==0){
             screen.value="Error";
             return;
         }
-
         ans = a / b;
     }
 
