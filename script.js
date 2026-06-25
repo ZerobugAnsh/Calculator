@@ -1,17 +1,71 @@
-const display = document.getElementById("display");
+let screen = document.getElementById("display");
 
-function appendValue(value) {
-    display.value += value;
-}
+let first = "";
+let second = "";
+let op = "";
 
-function clearDisplay() {
-    display.value = "";
-}
-
-function calculate() {
-    try {
-        display.value = eval(display.value);
-    } catch {
-        display.value = "Error";
+function appendValue(value)
+{
+    if(value=="+" || value=="-" || value=="*" || value=="/")
+    {
+        op = value;
+        screen.value += value;
     }
+    else
+    {
+        if(op=="")
+        {
+            first += value;
+        }
+        else
+        {
+            second += value;
+        }
+
+        screen.value += value;
+    }
+}
+
+function clearDisplay()
+{
+    screen.value="";
+    first="";
+    second="";
+    op="";
+}
+
+function calculate()
+{
+    let a = Number(first);
+    let b = Number(second);
+    let ans;
+
+    if(op=="+")
+    {
+        ans = a + b;
+    }
+    else if(op=="-")
+    {
+        ans = a - b;
+    }
+    else if(op=="*")
+    {
+        ans = a * b;
+    }
+    else if(op=="/")
+    {
+        if(b==0)
+        {
+            screen.value="Error";
+            return;
+        }
+
+        ans = a / b;
+    }
+
+    screen.value = ans;
+
+    first = ans.toString();
+    second = "";
+    op = "";
 }
